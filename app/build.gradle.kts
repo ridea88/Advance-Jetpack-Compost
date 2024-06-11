@@ -4,6 +4,7 @@ plugins {
     //alias(libs.plugins.googleGmsGoogleServices)
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {

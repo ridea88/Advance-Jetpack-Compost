@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.advance_jetpack_compost.presentation.login.Login
 import com.example.advance_jetpack_compost.ui.theme.AdvanceJetpackCompostTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,12 +23,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AdvanceJetpackCompostTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                Login(navController = rememberNavController())
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
             }
         }
     }
