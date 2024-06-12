@@ -64,25 +64,4 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
-    fun loginWithGoogle(credential: AuthCredential, home: () -> Unit) {
-        viewModelScope.launch {
-            repository.loginWithGoogle(credential).collect { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        _stateGoogle.value = LoginGoogleState(success = result.data)
-                        home()
-                    }
-
-                    is Resource.Loading -> {
-                        _stateGoogle.value = LoginGoogleState(loading = true)
-                    }
-
-                    is Resource.Error -> {
-                        _stateGoogle.value = LoginGoogleState(error = result.message)
-                    }
-                }
-            }
-        }
-    }
 }

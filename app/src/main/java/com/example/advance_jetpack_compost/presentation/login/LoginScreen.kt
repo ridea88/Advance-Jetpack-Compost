@@ -81,24 +81,6 @@ fun Login(
     var isRegistering by remember { mutableStateOf(false) }
     val googleLoginState = viewModel.stateGoogle.value
 
-//    @Suppress("DEPRECATION")
-//    val launcher =
-//        rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
-//            val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-//            try {
-//                val result = account.getResult(ApiException::class.java)
-//                val credential = GoogleAuthProvider.getCredential(result.idToken, null)
-//                viewModel.loginWithGoogle(credential) {
-//                    navController.navigate(Screen.Home.route) {
-//                        popUpTo(Screen.Login.route) {
-//                            inclusive = true
-//                        }
-//                    }
-//                }
-//            } catch (it: ApiException) {
-//                Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-//            }
-//        }
 
     Box(modifier = Modifier.fillMaxSize()) {
         LoginScreen(
@@ -170,8 +152,6 @@ fun Login(
                 }
             },
 
-            toggleAuthMode = { isRegistering = !isRegistering },
-            isRegistering = isRegistering,
             modifier = modifier,
             navController = navController
         )
@@ -209,17 +189,11 @@ fun LoginScreen(
     onPasswordChange: (String) -> Unit,
     onPasswordConfirmChange: (String) -> Unit,
     onLoginClick: () -> Unit,
-    //moveToForgot: () -> Unit,
-    //onGoogleClick: () -> Unit,
+
     onRegisterClick: () -> Unit,
-    toggleAuthMode: () -> Unit,
-    isRegistering: Boolean,
     navController: NavController,
     modifier: Modifier = Modifier
 ) {
-//    BackgroungLogin (
-//        modifier = Modifier.fillMaxSize()
-//    ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -230,14 +204,7 @@ fun LoginScreen(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-//                Spacer(modifier = Modifier.height(80.dp))
-//                Image(
-//                    painter = painterResource(id = R.drawable.logofix),
-//                    contentDescription = null,
-//                    modifier = Modifier
-//                        .size(130.dp),
-//                    alignment = Alignment.Center
-//                )
+
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     modifier = Modifier
@@ -346,57 +313,7 @@ fun LoginScreen(
                         )
                     }
                 }
-//                Text(
-//                    modifier = Modifier
-//                        .padding(top = 40.dp),
-//                    text = "Atau Login Dengan",
-//                    style = MaterialTheme.typography.bodyMedium,
-//                    textAlign = TextAlign.Center,
-//                    fontFamily = poppinsFontFamily, fontWeight = FontWeight.Normal,
-//                    color = Color.Black,
-//                )
-//                Row (
-//                    modifier = Modifier
-//                        .padding(top = 11.dp)
-//                ){
-//                    Box (
-//                        modifier = Modifier
-//                            .shadow(
-//                                elevation = 5.dp,
-//                                shape = RoundedCornerShape(10.dp)
-//                            )
-//                            .size(40.dp)
-//                            .background(Color.White)
-//                            .clickable(onClick = onGoogleClick),
-//                        contentAlignment = Alignment.Center
-//                    ){
-//                        Image(
-//                            modifier = Modifier
-//                                .size(40.dp),
-//                            painter = painterResource(id = R.drawable.logogoogle),
-//                            contentDescription =null,
-//                        )
-////                        }
-//                    }
-//                    Spacer(modifier = Modifier.width(19.dp))
-//                    Box (
-//                        modifier = Modifier
-//                            .shadow(
-//                                elevation = 5.dp,
-//                                shape = RoundedCornerShape(10.dp)
-//                            )
-//                            .size(40.dp)
-//                            .background(Color.White),
-//                        contentAlignment = Alignment.Center
-//                    ){
-//                        Image(
-//                            modifier = Modifier
-//                                .size(25.dp)  ,
-//                            painter = painterResource(id = R.drawable.logo_facebook),
-//                            contentDescription =null,
-//                        )
-//                    }
-//                }
+
                 Row (
                     modifier = Modifier
                         .padding(top = 20.dp),
@@ -424,23 +341,5 @@ fun LoginScreen(
 
                 }
             }
-//            Column (
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(top = 70.dp)
-//                    .background(color1)
-//                    .height(31.dp),
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//                verticalArrangement = Arrangement.Center,
-//            ){
-//                Text(
-//                    text = "Kualitas Tanpa Kepemilikan, Nikmati dengan Sewa",
-//                    style = MaterialTheme.typography.bodySmall,
-//                    textAlign = TextAlign.Center,
-//                    fontFamily = poppinsFontFamily, fontWeight = FontWeight.Normal,
-//                    color = Color.White
-//                )
-//            }
         }
-//    }
 }
