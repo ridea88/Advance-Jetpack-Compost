@@ -1,4 +1,5 @@
 package com.example.advance_jetpack_compost.Navigation
 
-class Screen {
+sealed class Screen (val route : String) {
+    data object Login : Screen("login")
 }

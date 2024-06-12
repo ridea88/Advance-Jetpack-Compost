@@ -118,31 +118,24 @@ fun Login(
                         )
                             .show()
                     } else {
-//                        viewModel.loginUser(email, password) {
+                        viewModel.loginUser(email, password) {
+                            Toast.makeText(
+                                context,
+                                "Login Berhasil",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
 //                            navController.navigate(Screen.Home.route) {
 //                                popUpTo(Screen.Login.route) {
 //                                    inclusive = true
 //                                }
 //                            }
-//                            email = ""
-//                            password = ""
-//                        }
-                        Toast.makeText(
-                            context,
-                            "Login Berhasil",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                            email = ""
+                            password = ""
+                        }
                     }
                 }
             },
-//            moveToForgot = {
-//                Toast.makeText(
-//                    context,
-//                    "Silahkan di kembangkan sendiri",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            },
             onRegisterClick = {
                 coroutineScope.launch {
                     if (email.isBlank() || password.isBlank()) {
@@ -159,20 +152,20 @@ fun Login(
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
-//                        viewModel.registerUser(email, password) {
+                        viewModel.registerUser(email, password) {
+                            Toast.makeText(
+                                context,
+                                "Register Berhasil",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
 //                            navController.navigate(Screen.Home.route) {
 //                                popUpTo(Screen.Login.route) { inclusive = true }
 //                            }
-//                            email = ""
-//                            password = ""
-//                            passwordConfirm = ""
-//                        }
-                        Toast.makeText(
-                            context,
-                            "Register Berhasil",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                            email = ""
+                            password = ""
+                            passwordConfirm = ""
+                        }
                     }
                 }
             },
