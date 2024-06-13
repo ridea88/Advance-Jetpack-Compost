@@ -1,6 +1,5 @@
 package com.example.advance_jetpack_compost.di
 
-<<<<<<< HEAD
 import android.app.Application
 import androidx.room.Room
 import com.example.advance_jetpack_compost.movieList.data.local.movie.MovieDatabase

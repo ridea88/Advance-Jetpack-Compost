@@ -18,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.advance_jetpack_compost.detail.presentation.DetailsScreen
 import com.example.advance_jetpack_compost.movieList.util.Screen
+import com.example.advance_jetpack_compost.presentation.login.Login
 import com.example.advance_jetpack_compost.ui.theme.AdvanceJetpackCompostTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,14 +40,16 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.Home.rout
+                        startDestination = Screen.Login.route
                     ) {
-                        composable(Screen.Home.rout) {
+                        composable(Screen.Home.route) {
                             HomeScreen(navController)
                         }
-
+                        composable(Screen.Login.route) {
+                            Login(navController)
+                        }
                         composable(
-                            Screen.Details.rout + "/{movieId}",
+                            Screen.Details.route + "/{movieId}",
                             arguments = listOf(
                                 navArgument("movieId") { type = NavType.IntType }
                             )

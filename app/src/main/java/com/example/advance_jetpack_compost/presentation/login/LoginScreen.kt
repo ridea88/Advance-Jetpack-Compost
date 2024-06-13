@@ -60,6 +60,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.advance_jetpack_compost.movieList.util.Screen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -106,12 +107,12 @@ fun Login(
                                 "Login Berhasil",
                                 Toast.LENGTH_SHORT
                             )
-                                .show()
-//                            navController.navigate(Screen.Home.route) {
-//                                popUpTo(Screen.Login.route) {
-//                                    inclusive = true
-//                                }
-//                            }
+//                                .show()
+                            navController.navigate(Screen.Home.route) {
+                                popUpTo(Screen.Login.route) {
+                                    inclusive = true
+                                }
+                            }
                             email = ""
                             password = ""
                         }

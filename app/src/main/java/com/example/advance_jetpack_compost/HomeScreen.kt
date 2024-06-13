@@ -74,16 +74,16 @@ fun HomeScreen(navController: NavHostController) {
         ) {
             NavHost(
                 navController = bottomNavController,
-                startDestination = Screen.PopularMovieList.rout
+                startDestination = Screen.PopularMovieList.route
             ) {
-                composable(Screen.PopularMovieList.rout) {
+                composable(Screen.PopularMovieList.route) {
                     PopularMoviesScreen(
                         navController = navController,
                         movieListState = movieListState,
                         onEvent = movieListViewModel::onEvent
                     )
                 }
-                composable(Screen.UpcomingMovieList.rout) {
+                composable(Screen.UpcomingMovieList.route) {
                     UpcomingMoviesScreen(
                         navController = navController,
                         movieListState = movieListState,
@@ -127,13 +127,13 @@ fun BottomNavigationBar(
                         0 -> {
                             onEvent(MovieListUiEvent.Navigate)
                             bottomNavController.popBackStack()
-                            bottomNavController.navigate(Screen.PopularMovieList.rout)
+                            bottomNavController.navigate(Screen.PopularMovieList.route)
                         }
 
                         1 -> {
                             onEvent(MovieListUiEvent.Navigate)
                             bottomNavController.popBackStack()
-                            bottomNavController.navigate(Screen.UpcomingMovieList.rout)
+                            bottomNavController.navigate(Screen.UpcomingMovieList.route)
                         }
                     }
                 }, icon = {
