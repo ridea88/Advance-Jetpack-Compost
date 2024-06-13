@@ -1,9 +1,13 @@
 package com.example.advance_jetpack_compost.di
 
+<<<<<<< HEAD
 import android.app.Application
 import androidx.room.Room
 import com.example.advance_jetpack_compost.movieList.data.local.movie.MovieDatabase
 import com.example.advance_jetpack_compost.movieList.data.remote.MovieApi
+import com.example.advance_jetpack_compost.data.firebase.AuthRepository
+import com.example.advance_jetpack_compost.data.firebase.AuthRepositoryImpl
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,4 +51,13 @@ object AppModule {
         ).build()
     }
 
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideAuthRepositoryImpl(firebaseAuth: FirebaseAuth): AuthRepository {
+        return AuthRepositoryImpl(firebaseAuth)
+    }
 }
