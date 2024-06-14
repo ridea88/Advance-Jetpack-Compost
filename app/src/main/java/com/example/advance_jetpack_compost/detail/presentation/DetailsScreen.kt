@@ -1,7 +1,11 @@
 package com.example.advance_jetpack_compost.detail.presentation
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +29,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -221,8 +229,17 @@ fun DetailsScreen() {
         Spacer(modifier = Modifier.height(8.dp))
 
         detailsState.movie?.let {
+            var expanded by remember { mutableStateOf(false) }
             Text(
-                modifier = Modifier.padding(start = 16.dp),
+                modifier = Modifier
+                    .padding(start = 16.dp)
+                    .animateContentSize(animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                    )
+                    .clickable { expanded = !expanded },
+                maxLines = if (expanded) 2 else Int.MAX_VALUE,
                 text = it.overview,
                 fontSize = 16.sp,
             )
