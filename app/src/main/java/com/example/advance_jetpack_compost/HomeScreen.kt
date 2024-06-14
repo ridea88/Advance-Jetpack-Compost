@@ -38,6 +38,7 @@ import com.example.advance_jetpack_compost.movieList.presentation.MovieListUiEve
 import com.example.advance_jetpack_compost.movieList.presentation.MovieListViewModel
 import com.example.advance_jetpack_compost.movieList.presentation.PopularMoviesScreen
 import com.example.advance_jetpack_compost.movieList.util.Screen
+import com.example.advance_jetpack_compost.ui.theme.shimmerLoading
 import com.example.mymovie.movieList.presentation.UpcomingMoviesScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -111,6 +112,7 @@ fun HomeScreen(navController: NavHostController) {
 fun BottomNavigationBar(
     bottomNavController: NavHostController, onEvent: (MovieListUiEvent) -> Unit
 ) {
+    val shimmer = shimmerLoading()
 
     val items = listOf(
         BottomItem(
@@ -147,11 +149,15 @@ fun BottomNavigationBar(
                         }
                     }
                 }, icon = {
-                    Icon(
-                        imageVector = bottomItem.icon,
-                        contentDescription = bottomItem.title,
-                        tint = MaterialTheme.colorScheme.onBackground
-                    )
+                    if (selected.intValue == index) {
+                        shimmer
+                    } else {
+                        Icon(
+                            imageVector = bottomItem.icon,
+                            contentDescription = bottomItem.title,
+                            tint = MaterialTheme.colorScheme.onBackground
+                        )
+                    }
                 }, label = {
                     Text(
                         text = bottomItem.title, color = MaterialTheme.colorScheme.onBackground

@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.advance_jetpack_compost.R
@@ -97,6 +98,7 @@ fun HeaderProfile(
 fun MiddleProfile(
     name: String,
     modifier: Modifier = Modifier,
+    navController: NavController
 
 ) {
     Column(modifier = Modifier
@@ -117,8 +119,8 @@ fun MiddleProfile(
                  modifier = Modifier
                      .width(300.dp)
                  ,
-                 onClick = {"m"}) {
-                 Text(text = "Pengaturan Akun")
+                 onClick = {navController.navigate("maps")}) {
+                 Text(text = "Lokasi Saya")
              }
              Spacer(modifier = Modifier.height(8.dp))
              Button(
