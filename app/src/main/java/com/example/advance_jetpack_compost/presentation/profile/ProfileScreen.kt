@@ -97,6 +97,7 @@ fun ProfileContent(
         }
         item {
             MiddleProfile(
+                navController = navController,
                 name = email,
                 modifier = Modifier
                     .padding(start = 90.dp),
