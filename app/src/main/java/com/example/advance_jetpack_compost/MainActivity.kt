@@ -20,6 +20,7 @@ import com.example.advance_jetpack_compost.detail.presentation.DetailsScreen
 import com.example.advance_jetpack_compost.movieList.presentation.MapsScreen
 import com.example.advance_jetpack_compost.movieList.util.Screen
 import com.example.advance_jetpack_compost.presentation.login.Login
+import com.example.advance_jetpack_compost.presentation.profile.ProfileScreen
 import com.example.advance_jetpack_compost.ui.theme.AdvanceJetpackCompostTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +52,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Screen.Maps.route) {
                             MapsScreen(navController)
+                        }
+                        composable(Screen.Profile.route) {
+                            ProfileScreen(navController)
                         }
                         composable(
                             Screen.Details.route + "/{movieId}",

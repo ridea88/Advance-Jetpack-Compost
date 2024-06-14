@@ -60,6 +60,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.advance_jetpack_compost.data.firebase.DataStore
+import com.example.advance_jetpack_compost.data.firebase.SharedPreferencesManager
 import com.example.advance_jetpack_compost.movieList.util.Screen
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -75,6 +77,10 @@ fun Login(
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
+    val sharedPreferencesManager = remember {
+        SharedPreferencesManager(context)
+    }
+    val dataStore = DataStore(context)
     val state = viewModel.state.collectAsState(initial = null)
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -102,6 +108,11 @@ fun Login(
                             .show()
                     } else {
                         viewModel.loginUser(email, password) {
+                            sharedPreferencesManager.email = email
+                            sharedPreferencesManager.password = password
+                            coroutineScope.launch {
+                                dataStore.saveStatus(true)
+                            }
                             Toast.makeText(
                                 context,
                                 "Login Berhasil",
