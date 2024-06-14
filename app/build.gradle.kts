@@ -124,4 +124,10 @@ dependencies {
 
     // maps
     implementation("com.google.maps.android:maps-compose:4.3.3")
+
+    //Work
+    implementation ("androidx.work:work-runtime-ktx:2.7.1")
+
+    //Animation
+    implementation("androidx.compose.animation:animation:1.6.8")
 }

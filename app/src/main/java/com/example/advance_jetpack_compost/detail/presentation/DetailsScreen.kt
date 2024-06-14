@@ -2,6 +2,7 @@ package com.example.advance_jetpack_compost.detail.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,8 +17,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.rounded.ImageNotSupported
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,12 +36,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.example.advance_jetpack_compost.R
 import com.example.advance_jetpack_compost.movieList.data.remote.MovieApi
+import com.example.advance_jetpack_compost.movieList.util.DownloadManager
 import com.example.advance_jetpack_compost.movieList.util.RatingBar
 import com.example.mymovie.details.presentation.DetailsViewModel
 
@@ -185,6 +191,20 @@ fun DetailsScreen() {
                         modifier = Modifier.padding(start = 16.dp),
                         text = movie.release_date + stringResource(R.string.votes)
                     )
+
+                    Spacer(modifier = Modifier.height(35.dp))
+
+                    Row (
+                        modifier = Modifier
+                            .padding(start = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+                        Text(text = "Download this Movie")
+                        IconButton(onClick = { startDownload() }) {
+                            Icon(imageVector = Icons.Default.Download, contentDescription = null )
+                        }
+                    }
                 }
             }
         }
@@ -213,4 +233,8 @@ fun DetailsScreen() {
 
     }
 
+}
+fun startDownload(){
+    val workRequest = OneTimeWorkRequestBuilder<DownloadManager>().build()
+    WorkManager.getInstance().enqueue(workRequest)
 }
