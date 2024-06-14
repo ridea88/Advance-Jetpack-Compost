@@ -41,9 +41,10 @@ import com.example.advance_jetpack_compost.R
 
 
 
+
 @Composable
 fun HeaderProfile(
-    name: String,
+    email: String,
     navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit
@@ -74,7 +75,7 @@ fun HeaderProfile(
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(MaterialTheme.colorScheme.primary)) {
-                        append(name)
+                        append(email)
                     }
                 },
                 style = MaterialTheme.typography.titleLarge.copy(

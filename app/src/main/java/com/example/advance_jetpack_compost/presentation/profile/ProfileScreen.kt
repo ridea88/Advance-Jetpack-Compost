@@ -21,12 +21,15 @@ import com.example.advance_jetpack_compost.presentation.profile.component.Middle
 import kotlinx.coroutines.launch
 
 
+
 @Composable
 fun ProfileScreen(
     navController: NavController,
     modifier: Modifier = Modifier,
 
 ) {
+
+
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
 
@@ -38,9 +41,10 @@ fun ProfileScreen(
 
     val email = sharedPreferencesManager.email?: ""
 
+
     ProfileContent(
         navController = navController,
-        name = email,
+        email = email,
         onLogoutClick = {
             sharedPreferencesManager.clear()
             coroutineScope.launch {
@@ -67,7 +71,7 @@ fun ProfileScreen(
 @Composable
 fun ProfileContent(
     navController: NavController,
-    name: String,
+    email: String,
     onLogoutClick : () -> Unit,
     onBackClick : () -> Unit,
     modifier: Modifier = Modifier
@@ -81,7 +85,7 @@ fun ProfileContent(
     ) {
         item {
             HeaderProfile(
-                name = name,
+                email = email,
                 onBackClick = onBackClick,
                 modifier = Modifier
                     .padding(start = 90.dp),
@@ -93,7 +97,7 @@ fun ProfileContent(
         }
         item {
             MiddleProfile(
-                name = name,
+                name = email,
                 modifier = Modifier
                     .padding(start = 90.dp),
 
@@ -104,7 +108,7 @@ fun ProfileContent(
         }
         item {
             FooterProfile(
-                name = name,
+                name = email,
                 onLogoutClick = onLogoutClick,
                 modifier = Modifier
                     .padding(start = 90.dp)
