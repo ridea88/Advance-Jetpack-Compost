@@ -337,7 +337,7 @@ fun LoginScreen(
                         color = Color.Black,
                         textDecoration = TextDecoration.Underline,
                         modifier = Modifier
-                            .clickable { navController.navigate("register") }
+                            .clickable { navController.navigate("maps") }
                     )
 
                 }
