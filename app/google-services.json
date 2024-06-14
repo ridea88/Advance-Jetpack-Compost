@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "68982806665",
+    "project_id": "advance-jetpack-compost",
+    "storage_bucket": "advance-jetpack-compost.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68982806665:android:5f8cd953f45f8c3d294e58",
+        "android_client_info": {
+          "package_name": "com.example.advance_jetpack_compost"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5qr-9Ac4TEB-0qBlx3iXmw6b4eqV2VgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
