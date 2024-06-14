@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -112,11 +114,14 @@ dependencies {
     //googleauth
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.firebase:firebase-auth")
-//    implementation("com.google.android.gms:play-services-auth:21.2.0")
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 
     // system UI Controller
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 
     // Extended Icons
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
+
+    // maps
+    implementation("com.google.maps.android:maps-compose:4.3.3")
 }
