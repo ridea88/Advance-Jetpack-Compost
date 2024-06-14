@@ -43,6 +43,9 @@ package com.example.advance_jetpack_compost.presentation
 //        enableEdgeToEdge()
 //        setContent {
 //            AdvanceJetpackCompostTheme {
+//              repeat(3){
+//                  shimmerLoading()
+//              }
 //                Login(navController = rememberNavController())
 //            }
 //        }
